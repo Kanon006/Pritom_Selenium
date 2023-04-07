@@ -1,3 +1,5 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,7 +12,7 @@ public class SeleniumTest {
 
     public static WebDriver driver;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         String currentDir = System.getProperty("user.dir");
         System.out.println(currentDir);
@@ -33,7 +35,19 @@ public class SeleniumTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://chaldal.com/");
+        Thread.sleep(3000); // only one click wait method
         driver.manage().window().maximize();
+
+
+
+        Thread.sleep(3000);
+//        driver.findElement(By.xpath("/html/body/div[2]/div/div[3]/div/div[2]/div/div/div[2]/div[1]/div/div/div[2]/h5")).click();
+//        Thread.sleep(5000);
+//        driver.findElement(By.xpath("/html/body/div[2]/div/div[3]/div/div[2]/div/div/div[2]/div[1]/div/div/div[3]/h5")).click();
+//        Thread.sleep(5000);
+        driver.findElement(By.xpath("/html/body/div[2]/div/div[3]/div/div[1]/div[1]/form/div/div[1]/input")).sendKeys("Egg");
+        driver.findElement(By.xpath("/html/body/div[2]/div/div[3]/div/div[1]/div[1]/form/div/div[1]/input")).sendKeys(Keys.ENTER);
+
 
 
     }
